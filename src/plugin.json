@@ -1,0 +1,29 @@
+{
+  "type": "panel",
+  "name": "Water Achieving Rate",
+  "id": "advantech-water-achieving-rate3",
+  "info": {
+    "description": "Radar Chart Panel for Grafana",
+    "author": {
+      "name": "Advantech",
+      "url": "http://www.advantech.com.tw/"
+    },
+    "keywords": [
+      "waterrate",
+      "panel"
+    ],
+    "logos": {
+      "small": "img/Water Achieving Rate_small.png",
+      "large": "img/Water Achieving Rate_large.png"
+    },
+    "links": [],
+    "screenshots": [],
+    "version": "1.0.2",
+    "updated": "2019-8-27",
+    "Copyright": "Copyright 2018 © Advantech"
+  },
+  "dependencies": {
+    "grafanaVersion": "5.x.x",
+    "plugins": []
+  }
+}

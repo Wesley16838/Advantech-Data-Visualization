@@ -1,0 +1,349 @@
+<div class="editor-row">
+    <div class="section gf-form-group">
+        <h5 class="section-heading">General Setting</h5>
+            <div class="gf-form-inline">
+                <div class="gf-form">
+                    <label class="gf-form-label width-12">Use DataSource Unit</label>
+                    <gf-form-switch checked="ctrl.panel.isCheckUnit" on-change="ctrl.setting(ctrl.panel.isCheckUnit)"></gf-form-switch> 
+                </div>    
+                <div class="gf-form" ng-hide="ctrl.panel.isCheckUnit">
+                    <label class="gf-form-label width-4">Unit</label>
+                    <div class="gf-form-dropdown-typeahead width-10" ng-model="ctrl.panel.format" dropdown-typeahead2="ctrl.unitFormats" dropdown-typeahead-on-select="ctrl.setUnitFormat($subItem.value)" ng-model-onblur></div>
+                </div>
+            </div>
+            <div class="gf-form-inline">
+                <div class="gf-form">
+                    <label class="gf-form-label width-6">Decimals</label>
+                    <input type="number" class="gf-form-input width-10" placeholder="auto" data-placement="right" bs-tooltip="'Override automatic decimal precision for legend and tooltips'" ng-model="ctrl.panel.decimals" ng-change="ctrl.setUnitFormat(ctrl.panel.format)" ng-model-onblur>
+                </div>
+            </div>
+            <div class="gf-form-inline">
+                <div class="gf-form">
+                    <span class="gf-form-label width-6">Type</span>
+                    <div class="gf-form-select-wrapper max-width-10">
+                    <select class="gf-form-input" ng-model="ctrl.panel.WaterType" ng-options="t for t in ['original', 'new']" ng-change="ctrl.setFontSize()"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="gf-form-inline">
+                <div class="gf-form" ng-if = "ctrl.panel.WaterType === 'new'">
+                    <span class="gf-form-label width-6">Icon type</span>
+                    <div class="gf-form-select-wrapper max-width-10">
+                    <select class="gf-form-input" ng-model="ctrl.panel.iconType" ng-options="t for t in ['none', 'oil', 'water' , 'temperature']" ng-change="ctrl.setFontSize()"></select>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="section gf-form-group">
+        <h5 class="section-heading">Current Level setting</h5>
+        <div class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title_en</label>
+                <input type="text" class="gf-form-input width-10" placeholder="auto" data-placement="right" bs-tooltip="'Override automatic language for title if language is English'" ng-model="ctrl.panel.enProcessedTitle" ng-change="ctrl.setFontSize()" ng-model-onblur>
+            </div>
+        </div>
+        <div class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title_zh.tw</label>
+                <input type="text" class="gf-form-input width-10" placeholder="auto" data-placement="right" bs-tooltip="'Override automatic language for title if language is traditional Chinese'" ng-model="ctrl.panel.twProcessedTitle" ng-change="ctrl.setFontSize()" ng-model-onblur>
+            </div>
+        </div>
+        <div class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title_zh.cn</label>
+                <input type="text" class="gf-form-input width-10" placeholder="auto" data-placement="right" bs-tooltip="'Override automatic language for title if language is simplified Chinese'" ng-model="ctrl.panel.cnProcessedTitle" ng-change="ctrl.setFontSize()" ng-model-onblur>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='original'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Font size</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.processedfontSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                        <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title size</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.processedtitleSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                        <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <gf-form-switch class="gf-form" label-class="width-6" label="Title bold" checked="ctrl.panel.isprocessedtitleBold" on-change="ctrl.setFontSize()" ></gf-form-switch>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title Color</label>
+                <span class="gf-form-label">
+                    <spectrum-picker ng-model="ctrl.panel.processedtitleColor" ng-change="ctrl.setFontSize()"></spectrum-picker>
+                </span>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Value size</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.processedvalueSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                        <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <gf-form-switch class="gf-form" label-class="width-6" label="Value bold" checked="ctrl.panel.isprocessedvalueBold" on-change="ctrl.setFontSize()" ></gf-form-switch>
+            </div>            
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-7">Value Color</label>
+                <span class="gf-form-label">
+                    <spectrum-picker ng-model="ctrl.panel.processedvalueColor" ng-change="ctrl.setFontSize()"></spectrum-picker>
+                </span>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='original'" class="gf-form-inline">
+            <div class="gf-form">
+                <gf-form-switch class="gf-form" label-class="width-6" label="Font bold" checked="ctrl.panel.isProcessedTextBold" on-change="ctrl.setFontSize()" ></gf-form-switch>
+            </div>  
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='original'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Font color</label>
+                <span class="gf-form-label">
+                    <spectrum-picker ng-model="ctrl.panel.processedfontColor" ng-change="ctrl.setFontSize()"></spectrum-picker>
+                </span>
+            </div>
+        </div>
+    </div> 
+
+    <div class="section gf-form-group">
+        <h5 class="section-heading">Max Level setting</h5>
+        <div class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title_en</label>
+                <input type="text" class="gf-form-input width-10" placeholder="auto" data-placement="right" bs-tooltip="'Override automatic language for title if language is English'" ng-model="ctrl.panel.enExceptedTitle" ng-change="ctrl.setFontSize()" ng-model-onblur>
+            </div>
+        </div>
+        <div class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title_zh.tw</label>
+                <input type="text" class="gf-form-input width-10" placeholder="auto" data-placement="right" bs-tooltip="'Override automatic language for title if language is traditional Chinese'" ng-model="ctrl.panel.twExceptedTitle" ng-change="ctrl.setFontSize()" ng-model-onblur>
+            </div>
+        </div>
+        <div class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title_zh.cn</label>
+                <input type="text" class="gf-form-input width-10" placeholder="auto" data-placement="right" bs-tooltip="'Override automatic language for title if language is simplified Chinese'" ng-model="ctrl.panel.cnExceptedTitle" ng-change="ctrl.setFontSize()" ng-model-onblur>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='original'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Font size</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.exceptedfontSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                        <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title size</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.exceptedtitleSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                        <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <gf-form-switch class="gf-form" label-class="width-6" label="Title bold" checked="ctrl.panel.isexceptedtitleBold" on-change="ctrl.setFontSize()" ></gf-form-switch>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Title Color</label>
+                <span class="gf-form-label">
+                    <spectrum-picker ng-model="ctrl.panel.exceptedtitleColor" ng-change="ctrl.setFontSize()"></spectrum-picker>
+                </span>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Value size</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.exceptedvalueSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                        <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <gf-form-switch class="gf-form" label-class="width-6" label="Value bold" checked="ctrl.panel.isexceptedvalueBold" on-change="ctrl.setFontSize()" ></gf-form-switch>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-7">Value Color</label>
+                <span class="gf-form-label">
+                    <spectrum-picker ng-model="ctrl.panel.exceptedvalueColor" ng-change="ctrl.setFontSize()"></spectrum-picker>
+                </span>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='original'" class="gf-form-inline">
+            <div class="gf-form">
+                <gf-form-switch class="gf-form" label-class="width-6" label="Font bold" checked="ctrl.panel.isExceptedTextBold" on-change="ctrl.setFontSize()" ></gf-form-switch>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType=='original'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-6">Font color</label>
+                <span class="gf-form-label">
+                    <spectrum-picker ng-model="ctrl.panel.exceptedfontColor" ng-change="ctrl.setFontSize()"></spectrum-picker>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section gf-form-group">
+        <h5 class="section-heading">Draw circle</h5>
+        <!------ 일단 그냥  ------>
+        <div class="gf-form-inline">
+            <div class="gf-form max-width-21">
+                <label class="gf-form-label width-10">Circle Thresholds
+                    <tip>Define two threshold values&lt;br /&gt; 50,80 will produce: value &lt; 50 = Green, 50 &lt;= value &lt; 80 = Yellow, value &gt;= 80 = Red</tip>
+                </label>
+                <input type="text" class="gf-form-input" ng-model="ctrl.panel.thresholds" ng-blur="ctrl.limitThresholds(ctrl.panel.thresholds,$index)" placeholder="50,80"></input>
+            </div>
+        </div>
+        <div class="gf-form">
+            <label class="gf-form-label width-10">Circle Colors</label>
+            <span class="gf-form-label">
+                <spectrum-picker ng-model="ctrl.panel.sidecolors[0]" ng-change="ctrl.renderTheColor();"></spectrum-picker>
+            </span>
+            <span class="gf-form-label">
+                <spectrum-picker ng-model="ctrl.panel.sidecolors[1]" ng-change="ctrl.renderTheColor();"></spectrum-picker>
+            </span>
+            <span class="gf-form-label">
+                <spectrum-picker ng-model="ctrl.panel.sidecolors[2]" ng-change="ctrl.renderTheColor();"></spectrum-picker>
+            </span>
+            <span class="gf-form-label">
+                <a ng-click="ctrl.invertColorOrder()">
+                    Invert
+                </a>
+            </span>
+        </div>
+        <!------ 일단 그냥  ------>
+        <h5 class="section-heading">Ratio</h5>
+        <div ng-if="ctrl.panel.WaterType == 'new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-10">Ratio Title Size</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.ratiotitleSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                        <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType == 'new'" class="gf-form-inline">
+            <div class="gf-form">
+                <gf-form-switch class="gf-form" label-class="width-6" label="Title bold" checked="ctrl.panel.isratiotitleBold" on-change="ctrl.setFontSize()" ></gf-form-switch>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType == 'new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-10">Ratio Title Color</label>
+                <span class="gf-form-label">
+                    <spectrum-picker ng-model="ctrl.panel.ratiotitleColor" ng-change="ctrl.setFontSize()"></spectrum-picker>
+                </span>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType == 'new'" class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-10">Ratio Value Size</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.ratiovalueSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                        <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="gf-form-inline">
+            <div class="gf-form max-width-21">
+                <label class="gf-form-label width-10"> Ratio Thresholds
+                    <tip>Define two threshold values&lt;br /&gt; 50,80 will produce: value &lt; 50 = Green, 50 &lt;= value &lt; 80 = Yellow, value &gt;= 80 = Red</tip>
+                </label>
+                <input type="text" class="gf-form-input" ng-model="ctrl.panel.thresholds1" ng-blur="ctrl.limitThresholds1(ctrl.panel.thresholds1,$index)" placeholder="50,80"></input>
+            </div>
+        </div>
+        <div class="gf-form">
+            <label class="gf-form-label width-10">Ratio Value Colors</label>
+            <span class="gf-form-label">
+                <spectrum-picker ng-model="ctrl.panel.textcolors[0]" ng-change="ctrl.renderTheColor1();"></spectrum-picker>
+            </span>
+            <span class="gf-form-label">
+                <spectrum-picker ng-model="ctrl.panel.textcolors[1]" ng-change="ctrl.renderTheColor1();"></spectrum-picker>
+            </span>
+            <span class="gf-form-label">
+                <spectrum-picker ng-model="ctrl.panel.textcolors[2]" ng-change="ctrl.renderTheColor1();"></spectrum-picker>
+            </span>
+            <span class="gf-form-label">
+                <a ng-click="ctrl.invertColorOrder1()">
+                    Invert
+                </a>
+            </span>
+        </div>
+        <div ng-if="ctrl.panel.WaterType == 'original'" class="gf-form">
+            <label class="gf-form-label width-6">Font size</label>
+            <div class="gf-form-select-wrapper">
+                <select class="gf-form-input" ng-model="ctrl.panel.circlefontSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                    <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                </select>
+            </div>
+        </div>
+        <div ng-if="ctrl.panel.WaterType == 'original'" class="gf-form-inline">
+                <div class="gf-form">
+                    <gf-form-switch class="gf-form" label-class="width-6" label="Font bold" checked="ctrl.panel.isCircleTextBold" on-change="ctrl.setFontSize()" ></gf-form-switch>
+                </div>
+            </div>
+        <div ng-if="ctrl.panel.WaterType == 'new'" class="gf-form-inline">
+            <div class="gf-form">
+                <gf-form-switch class="gf-form" label-class="width-6" label="Value bold" checked="ctrl.panel.isratiovalueBold" on-change="ctrl.setFontSize()" ></gf-form-switch>
+            </div>
+        </div>
+    </div>
+   
+    <div class="section gf-form-group" ng-if="ctrl.panel.WaterType == 'new'">
+        <h5 class="section-heading">Seperator</h5>
+        <div class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-8">Width</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.seperateSize" ng-change="ctrl.setFontSize()" ng-model-onblur>
+                        <option ng-repeat="f in ctrl.fontCalc" ng-value="f.text">{{ f.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-8">Color</label>
+                <span class="gf-form-label">
+                    <spectrum-picker ng-model="ctrl.panel.seperateColor" ng-change="ctrl.setFontSize()"></spectrum-picker>
+                </span>
+            </div>
+        </div>  
+    </div>
+</div>

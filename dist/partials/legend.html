@@ -1,0 +1,41 @@
+<div class="editor-row">
+    <div class="section gf-form-group">
+        <h5 class="section-heading">Legend</h5>
+        <div class="gf-form-inline">
+            <div class="gf-form">
+                <label class="gf-form-label width-10">Show legend</label>
+                <gf-form-switch checked="ctrl.panel.isShowlegend" ng-model="ctrl.panel.isShowlegend" on-change="ctrl.changeLegendShow(ctrl.panel.isShowlegend)"></gf-form-switch>
+            </div>
+        </div>
+    </div>
+    <div class="section gf-form-group">
+        <h5 class="section-heading">Color Mappings</h5>
+        <div ng-repeat="(key,item) in ctrl.panel.legendText">
+            <div class="gf-form">
+                <span class="gf-form-label">{{$index+1}}</span>
+                <input type="text" class="gf-form-input width-9 radar-uneditably" ng-model="ctrl.panel.rowDatas[item].legendText" ng-model-onblur/>
+                <span class="gf-form-label">
+                    <i class="fa fa-arrow-right"></i>
+                </span>
+                <input type="text" class="gf-form-input width-9" ng-model="ctrl.panel.rowDatas[item].color" ng-change="ctrl.chengeLegenColor(true)" ng-model-onblur/>
+                <span class="gf-form-label">
+                    <spectrum-picker ng-model="ctrl.panel.rowDatas[item].color" ng-change="ctrl.chengeLegenColor(true)"></spectrum-picker>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="section gf-form-group">
+        <h5 class="section-heading">Text Mappings</h5>
+        <div ng-repeat="(key,item) in ctrl.panel.legendText">
+            <div class="gf-form">
+                <span class="gf-form-label">{{$index + 1}}</span>
+                <input type="text" class="gf-form-input width-9 radar-uneditably" ng-model="ctrl.panel.rowDatas[item].legendText" ng-model-onblur/>
+                <span class="gf-form-label">
+                    <i class="fa fa-arrow-right"></i>
+                </span>
+                <input type="text" class="gf-form-input width-9" ng-model="ctrl.panel.rowDatas[item].editLegendText " ng-change="ctrl.drawLegend()"/>
+            </div>
+        </div>
+    </div>
+</div>
+    

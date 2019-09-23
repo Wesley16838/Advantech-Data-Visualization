@@ -1,0 +1,2 @@
+"use strict";System.register(["./water_rate_ctrl","app/plugins/sdk"],function(a,b){var c,d;return{setters:[function(a){c=a.WaterRate},function(a){d=a.loadPluginCss}],execute:function(){d({dark:"plugins/advantech-water-achieving-rate3/css/radar.dark.css",light:"plugins/advantech-water-achieving-rate3/css/radar.light.css"}),a("PanelCtrl",c)}}});
+//# sourceMappingURL=module.js.map

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Temp</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Temp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" x="0" y="0" width="72" height="72"></rect>
+        <g id="thermometer" transform="translate(24.000000, 13.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M19.9999688,27.0555937 L19.9999688,7.99996875 C19.9999688,3.58171875 16.41825,0 12,0 C7.58175,0 4.00003125,3.58171875 4.00003125,7.99996875 L4.00003125,27.0555 C1.545,29.2528125 0,32.4460313 0,36 C0,42.6274687 5.372625,48 12,48 C18.627375,48 24,42.6274687 24,36 C24,32.4460313 22.455,29.2528125 19.9999688,27.0555937 Z M11.9998945,45 C7.02940211,45 3,40.9576358 3,35.971154 C3,33.364382 4.10119062,30.9461584 6.00108984,29.2402289 L7.5,27.8943613 L7.5,7.48779297 C7.5,4.99455206 9.51475379,2.97331708 12,2.97331708 C14.4852462,2.97331708 16.5,4.99444625 16.5,7.48779297 L16.5,27.8943613 L17.9989102,29.2402289 C19.8988094,30.9461584 21,33.3642762 21,35.971154 C20.9997891,40.9576358 16.970387,45 11.9998945,45 Z" id="Shape"></path>
+            <rect id="Rectangle" x="10" y="14" width="4" height="26"></rect>
+            <circle id="Oval" cx="12" cy="36" r="6"></circle>
+        </g>
+    </g>
+</svg>

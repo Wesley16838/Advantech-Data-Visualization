@@ -1,0 +1,8 @@
+[debug] [2019-07-10T00:50:12.230Z] ----------------------------------------------------------------------
+[debug] [2019-07-10T00:50:12.234Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only functions:widgets
+[debug] [2019-07-10T00:50:12.234Z] CLI Version:   7.0.2
+[debug] [2019-07-10T00:50:12.234Z] Platform:      darwin
+[debug] [2019-07-10T00:50:12.234Z] Node Version:  v10.9.0
+[debug] [2019-07-10T00:50:12.240Z] Time:          Wed Jul 10 2019 08:50:12 GMT+0800 (Taipei Standard Time)
+[debug] [2019-07-10T00:50:12.241Z] ----------------------------------------------------------------------
+[debug] 
